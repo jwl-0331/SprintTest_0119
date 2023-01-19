@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.jwl.spring.test.database.dao.StoreDAO">
+ 
+ <!--  DAO에 쿼리 문을 넘겨주기 -->
+ <!-- type 알아서 설정된 List type 으로 돌려준다. 쿼리문 수행 장소에 SELECT 문을 넘겨준다 -->
+ <select id="selectStoreList" resultType="com.jwl.spring.test.database.model.Store">
+ 	SELECT
+ 		`id`
+ 		, `name`
+ 		, `phoneNumber`
+ 		, `address`
+ 		, `businessNumber`
+ 		, `introduce`
+ 		, `createdAt`
+ 		, `updatedAt` 
+ 	FROM 
+ 		`store`
+ </select>
+</mapper>
