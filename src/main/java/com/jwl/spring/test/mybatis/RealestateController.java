@@ -15,6 +15,8 @@ import com.jwl.spring.test.mybatis.model.Realestate;
 @RestController
 @RequestMapping("/mybatis/test01")
 public class RealestateController {
+	
+	//id를 리퀘스트파마리터로 전달받고 조회결과 json으로
 	@Autowired
 	private RealestateBO realestateBO;
 	@RequestMapping("/1")
@@ -32,7 +34,9 @@ public class RealestateController {
 	}
 	
 	@RequestMapping("/3")
-	public List<Realestate> test01_3(@RequestParam(value="area")int area,@RequestParam(value="price")int price) {
+	public List<Realestate> test01_3(
+			@RequestParam(value="area")int area
+			, @RequestParam(value="price")int price) {
 		List<Realestate> realestateList = realestateBO.getRealestateAsArea(area, price);
 		return realestateList;
 	}

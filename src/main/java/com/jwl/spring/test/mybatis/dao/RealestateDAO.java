@@ -12,6 +12,7 @@ public interface RealestateDAO {
 	
 	public List<Realestate> selectRealestateAsRent(@Param("rentPrice")int rentPrice);
 	
-	public List<Realestate> selectRealestateAsArea(@Param("area") int area, @Param("price") int price);
+	public List<Realestate> selectRealestateAsArea(@Param("area") int area
+			, @Param("price") int price);
 	
 }
