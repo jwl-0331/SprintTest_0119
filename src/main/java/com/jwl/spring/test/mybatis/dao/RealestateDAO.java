@@ -12,7 +12,21 @@ public interface RealestateDAO {
 	
 	public List<Realestate> selectRealestateAsRent(@Param("rentPrice")int rentPrice);
 	
-	public List<Realestate> selectRealestateAsArea(@Param("area") int area
+	public List<Realestate> selectRealestateAsArea(
+			@Param("area") int area
 			, @Param("price") int price);
+	public int insertRealestateByObject(Realestate realestate);
 	
+	public int insertRealestateByField(
+			@Param("realtorId")int realtorId
+			,@Param("address") String address
+			,@Param("area") int area
+			,@Param("type") String type
+			,@Param("price") int price
+			,@Param("rentPrice") int rentPrice
+			);
+	
+	public int updateRealestate(@Param("id")int id,@Param("type")String type,@Param("price")int price);
+	
+	public int deleteRealestate(@Param("id")int id);
 }

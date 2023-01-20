@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class Realestate {
 	private int id;
-	private int realatorId;
+	private int realtorId;
 	private String address;
 	private int area;
 	private String type;
 	private int price;
-	private int rentprice;
+	private int rentPrice;
 	private Date createdAt;
 	private Date updatedAt;
 	public int getId() {
@@ -18,11 +18,11 @@ public class Realestate {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getRealatorId() {
-		return realatorId;
+	public int getRealtorId() {
+		return realtorId;
 	}
-	public void setRealatorId(int realatorId) {
-		this.realatorId = realatorId;
+	public void setRealtorId(int realtorId) {
+		this.realtorId = realtorId;
 	}
 	public String getAddress() {
 		return address;
@@ -48,11 +48,11 @@ public class Realestate {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getRentprice() {
-		return rentprice;
+	public int getRentPrice() {
+		return rentPrice;
 	}
-	public void setRentprice(int rentprice) {
-		this.rentprice = rentprice;
+	public void setRentPrice(int rentPrice) {
+		this.rentPrice = rentPrice;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

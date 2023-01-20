@@ -62,4 +62,72 @@
 		]]>
 		ORDER BY `id` DESC
 	</select> 
+	
+	<insert id="insertRealestateByObject" parameterType="com.jwl.spring.test.mybatis.model.Realestate">
+		INSERT INTO
+			`real_estate`
+		(	`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<insert id="insertRealestateByField" parameterType="map">
+		INSERT INTO
+			`real_estate`
+		(	`realtorId`
+			, `address`
+			, `area`
+			, `type`
+			, `price`
+			, `rentPrice`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{realtorId}
+			, #{address}
+			, #{area}
+			, #{type}
+			, #{price}
+			, #{rentPrice}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<update id="updateRealestate" parameterType="map">
+		UPDATE
+			`real_estate`
+		SET
+			`price` = #{price}
+			, `type` = #{type}
+			, `updatedAt` = now()
+		WHERE
+			`id` = #{id}
+	</update>
+	
+	<delete id="deleteRealestate" parameterType="int">
+		DELETE FROM
+			`real_estate`
+		WHERE
+			`id` = #{id}
+	</delete>
 </mapper>

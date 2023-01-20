@@ -20,13 +20,34 @@ public class RealestateBO {
 		return realestate;
 	}
 	
-	public List<Realestate> getRealestateAsRent(int rentprice){
-		List<Realestate> realestate = realestateDAO.selectRealestateAsRent(rentprice);
+	public List<Realestate> getRealestateAsRent(int rentPrice){
+		List<Realestate> realestate = realestateDAO.selectRealestateAsRent(rentPrice);
 		return realestate;
 	}
 	
 	public List<Realestate> getRealestateAsArea(int area, int price){
 		List<Realestate> realestateList = realestateDAO.selectRealestateAsArea(area,price);
 		return realestateList;
+	}
+	
+	//DAO 객체 넘겨서 INSERT
+	public int addRealestateByObject(Realestate realestate) {
+		int count = realestateDAO.insertRealestateByObject(realestate);
+		return count;
+	}
+	
+	public int addRealestateByField(int realtorId,String address,int area,String type,int price,int rentPrice) {
+		int count = realestateDAO.insertRealestateByField(realtorId,address,area,type,price,rentPrice);
+		return count;
+	}
+	
+	public int changeRealestate(int id,String type, int price) {
+		int count = realestateDAO.updateRealestate(id, type, price);
+		return count;
+	}
+	
+	public int deleteRealestate(int id) {
+		int count = realestateDAO.deleteRealestate(id);
+		return count;
 	}
 }
