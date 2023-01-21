@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jwl.spring.test.jsp.seller.dao.SellerDAO">
+	
+	<insert id="insertSeller" parameterType="map">
+		INSERT INTO
+			`seller`
+		(
+			`nickname`
+			, `temperature`
+			, `profileImage`
+			, `createdAt`
+			, `updatedAt`
+		)
+		VALUES
+		(
+			#{nickname}
+			, #{temperature}
+			, #{profileImage}
+			, now()
+			, now()
+		)
+	</insert>
+	
+	<select id="selectLastSeller" resultType="com.jwl.spring.test.jsp.seller.model.Seller">
+		SELECT
+			`id`
+			, `nickname`
+			, `profileImage`
+			, `temperature`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		ORDER BY 
+			`id` 
+		DESC LIMIT 1
+	</select>
+	
+	<select id="selectSeller" parameterType="int"
+	resultType="com.jwl.spring.test.jsp.seller.model.Seller">
+		SELECT
+			`id`
+			, `nickname`
+			, `profileImage`
+			, `temperature`
+			, `createdAt`
+			, `updatedAt`
+		FROM
+			`seller`
+		WHERE
+			`id` = #{id}	
+	</select>
+</mapper>
