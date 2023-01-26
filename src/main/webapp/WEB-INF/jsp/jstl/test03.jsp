@@ -48,12 +48,15 @@
 				</tr>
 			</thead>
 			<tbody>
+				<c:forEach var="cardBills" items="${cardBills }">
 				<tr>
-					<td>롯데 백화점</td>
-					<td>\120,000</td>
-					<td>2025년 3월 2일</td>
-					<td>6개월</td>
+					<td>${cardBills.store }</td>
+					<td><fmt:formatNumber value="${cardBills.pay }" type="currency"/></td>
+					<fmt:parseDate value="${cardBills.date}" pattern="yyyy-MM-dd" var="cardBillsDate" />
+					<td><fmt:formatDate value="${cardBillsDate }" pattern="yyyy년 MM월 dd일"/></td>
+					<td>${cardBills.installment }</td>
 				</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>
