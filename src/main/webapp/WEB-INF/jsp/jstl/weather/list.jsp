@@ -28,8 +28,8 @@
 			</div>
 			<%-- 가로 배치를 세로배치로 바꾼다 : flex-column --%>
 			<ul class="nav flex-column">
-				<li class="nav-item"><a href="#" class="nav-link text-white">날씨</a></li>
-				<li class="nav-item"><a href="#" class="nav-link text-white">날씨입력</a></li>
+				<li class="nav-item"><a href="/jstl/weather/list" class="nav-link text-white">날씨</a></li>
+				<li class="nav-item"><a href="/jstl/weather/input" class="nav-link text-white">날씨입력</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-white">테마날씨</a></li>
 				<li class="nav-item"><a href="#" class="nav-link text-white">관측기후</a></li>
 			</ul>

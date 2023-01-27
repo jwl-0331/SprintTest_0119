@@ -1,10 +1,10 @@
 package com.jwl.spring.test.jstl.bo;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jwl.spring.test.jstl.dao.WeatherHistoryDAO;
 import com.jwl.spring.test.jstl.model.Weather;
@@ -20,7 +20,7 @@ public class WeatherHistoryBO {
 	}
 	
 	public int addWeather(
-			String date
+			Date date
 			,String weather
 			,double temperatures
 			, double precipitation
