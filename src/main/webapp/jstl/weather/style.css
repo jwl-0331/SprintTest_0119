@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+#wrap{
+	width:1200px;
+	height:800px;
+	margin:auto;
+}
+
+.contents > .main-menu{
+	width:200px;
+	background-color:cornflowerblue;
+}
+
+.contents > .main-contents{
+	width:1000px;	
+}
+
+footer > .logo{
+	width:200px;
+	height:100px;
+}
+
+footer > .copyright{
+	width:1000px;
+	height:100px;
+}

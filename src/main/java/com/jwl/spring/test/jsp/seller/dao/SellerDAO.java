@@ -8,6 +8,7 @@ import com.jwl.spring.test.jsp.seller.model.Seller;
 @Repository
 public interface SellerDAO {
 	
+	
 	public int insertSeller(
 			@Param("nickname")String nickname
 			,@Param("temperature") double temperature
