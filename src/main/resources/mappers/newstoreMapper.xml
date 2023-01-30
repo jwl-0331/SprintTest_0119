@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.jwl.spring.test.jstl.dao.NewStoreDAO">
+<select id="selectStore" resultType="com.jwl.spring.test.database.model.Store">
+	SELECT
+ 		`id`
+ 		, `name`
+ 		, `phoneNumber`
+ 		, `address`
+ 		, `businessNumber`
+ 		, `introduce`
+ 		, `createdAt`
+ 		, `updatedAt` 
+ 	FROM 
+ 		`store`
+</select>
+</mapper>
+

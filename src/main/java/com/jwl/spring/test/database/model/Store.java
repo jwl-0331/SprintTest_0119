@@ -10,7 +10,7 @@ public class Store {
 	private String businessNumber;
 	private String introduce;
 	private Date createdAt;
-	private Date ipdatedAt;
+	private Date updatedAt;
 	public int getId() {
 		return id;
 	}
@@ -53,10 +53,10 @@ public class Store {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getIpdatedAt() {
-		return ipdatedAt;
+	public Date getupdatedAt() {
+		return updatedAt;
 	}
-	public void setIpdatedAt(Date ipdatedAt) {
-		this.ipdatedAt = ipdatedAt;
+	public void setupdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
 	}
 }

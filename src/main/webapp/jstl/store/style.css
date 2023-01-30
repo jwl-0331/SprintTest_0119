@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+#wrap{
+	height:800px;
+	width:600px;
+	margin:auto;
+}
+
+header{
+	height:80px;
+}
+
+.store-link {
+    color:black
+}
+
+.store-link:hover {
+    text-decoration: none;
+    color:#1b91a9;
+}
+
+footer{
+	height:70px;
+}

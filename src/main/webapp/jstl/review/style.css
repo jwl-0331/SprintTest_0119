@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+#wrap{
+	height:800px;
+	width:600px;
+	margin:auto;
+}
+
+header{
+	height:80px;
+}
+
+footer{
+	height:70px;
+}
