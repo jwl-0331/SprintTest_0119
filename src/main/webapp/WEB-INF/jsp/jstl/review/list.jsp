@@ -21,7 +21,7 @@
 <body>
 	<div id="wrap">
 		<header class="bg-info d-flex align-items-center">
-			<a href="/jstl/review/list"><h2 class="ml-4 text-white">배탈의 민족</h2></a>
+			<a href="/jstl/store/list"><h2 class="ml-4 text-white">배탈의 민족</h2></a>
 		</header>
 		<section class="contents mb-2">
 			<div class="display-4 mt-2">

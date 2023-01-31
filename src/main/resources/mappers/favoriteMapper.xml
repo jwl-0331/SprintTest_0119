@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.jwl.spring.test.ajax.dao.FavoriteDAO">
+ 
+	 <select id="selectFavorite" resultType="com.jwl.spring.test.ajax.model.Favorite">
+	 	SELECT
+	 		`id`
+	 		, `name`
+	 		, `address`
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	FROM
+	 		`favorite`
+	 	ORDER BY `id` DESC;
+	 </select>
+	 
+	 <insert id="insertFavorite" parameterType="map">
+	 	INSERT INTO
+	 		`favorite`
+	 	(
+	 		`name`
+	 		, `address`
+	 		, `createdAt`
+	 		, `updatedAt`
+	 	)
+	 	VALUE
+	 	(
+	 		#{name}
+	 		, #{address}
+	 		, now()
+	 		, now()
+	 	)
+	 </insert>
+ </mapper>
