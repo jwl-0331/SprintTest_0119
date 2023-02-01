@@ -22,4 +22,15 @@ public class FavoriteBO {
 			, String address) {
 		return favoriteDAO.insertFavorite(name, address);
 	}
+	
+	// 중복 있음 없음을 true false 로 전달
+	public boolean isDuplicateAddress(String address) {
+		int count = favoriteDAO.selectCountAddress(address);
+		
+		if(count == 0) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 }

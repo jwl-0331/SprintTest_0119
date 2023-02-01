@@ -48,6 +48,23 @@ public class FavoriteController {
 		
 		return result;
 	}
+	
+	//중복확인 API  -> 주소를 전달 받아서 데이터에 있는지 확인하고 JSON 형태로 전달해준다
+	@PostMapping("/is_duplicate")
+	@ResponseBody
+	public Map<String, Boolean>isDuplicateAddress(
+			@RequestParam("address") String address) {
+		
+		Map<String,Boolean> result = new HashMap<>();
+		
+		 if(favoriteBO.isDuplicateAddress(address)) {
+			 result.put("is_duplicate", true);
+		 }else {
+			 result.put("is_duplicate", false);
+		 }
+		
+		return result;
+	}
 	@GetMapping("/input")
 	public String favoriteInput() {
 		return "ajax/favorite/input";

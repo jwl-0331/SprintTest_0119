@@ -35,4 +35,13 @@
 	 		, now()
 	 	)
 	 </insert>
+	 
+	 <select id="selectCountAddress" parameterType="string" resultType="int">
+	 	SELECT
+	 		count(1)
+	 	FROM
+	 		`favorite`
+	 	WHERE 
+	 		`address` = #{address}
+	 </select>
  </mapper>
