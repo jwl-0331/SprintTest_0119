@@ -1,44 +1,31 @@
-@charset "UTF-8";
-
-
-
-#wrap {
-    width:1200px; 
-    margin:auto
+#wrap{
+    width: 1200px;
+    margin: auto;
 }
 
-.nav > .nav-item > .nav-link {
-    background-color:peru; 
-    color:white; 
-    font-size:17px;
-    font-weight: bold;
-}
-.nav > .nav-item > a:hover {
-    background-color:rgb(238, 156, 75);
+header{
+    height:100px;
 }
 
-.reservation {
-    height:300px; 
-    width:400px; 
-    background-color:sienna;
-     color:white;
+.main-menu{
+    height:40px;
+    background-color: peru;
 }
 
-.reservation-confirm {
-    height:300px;  
-    width:500px; 
-    background-color:chocolate; 
-    color:white;
-}
-.reservation-call {
-    height:300px;  
-    width:300px; 
-    background-color:sienna; 
-    color:white;
+.reserve-info{
+    height:300px;
+    background-color: sienna;
 }
 
-.member-input {width:600px}
-.input-label {width:90px}
-.text-input {width:300px !important;}
+.reserve-check{
+    height:300px;
+    background-color: chocolate;
+}
 
-address {font-size: 12px; color:gray;}
+.reserve-number{
+    height:300px;
+    background-color: sienna;
+}
+footer{
+    height:70px;
+}

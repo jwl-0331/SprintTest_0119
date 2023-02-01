@@ -14,170 +14,153 @@
 	<link rel="stylesheet" href="/ajax/pension/style.css" type="text/css">
 </head>
 <body>
-	<div id="wrap" >
-            <header class="mt-4">
-                <div class="text-center display-4">통나무 팬션</div>
-                <nav class="mt-4">
-                    <ul class="nav nav-fill">
-                        <li class="nav-item"><a class="nav-link" href="#">팬션소개</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">객실보기</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">예약안내</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
-                    </ul>
-                </nav>
-            </header>
-
-            <section class="banner">
-                <img src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg" id="bannerImage">
-            </section>
-            <sction class="d-flex">
-                <article class="reservation d-flex justify-content-center align-items-center">
-                    <div class="display-4">
-                        실시간 <br>
-                        예약 하기 
-                    </div>
+        <div id="wrap">
+            <jsp:include page="header.jsp"/>
+            <jsp:include page="nav.jsp"/>
+            <section class="contents">
+                <article class="main-image">
+                    <img id="mainbanner" src="http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg">
                 </article>
-                <article class="reservation-confirm">
-                    <div class="m-4">
-                        <div class="d-flex align-items-end">
-                            <h3 class="mr-4">예약 확인</h3>
+                <article class="main-content bg-primary d-flex">
+                    <div class="reserve-info col-4 d-flex justify-content-center align-items-center">
+                        <div class="display-4 text-white">
+                            실시간<br>예약 하기
+                        </div>
+                    </div>
+                    <div class="reserve-check col-5 p-4">
+                        <div class="d-flex align-items-end text-white">
+                            <h3 class="mr-3">예약확인</h3>
+                            <label>회원 <input type="radio" name="member" value="member"checked></label>
+                            <label class="ml-2">비회원 <input type="radio" name="member" value="nonMember"></label>
+                        </div>
                         
-                            <label>회원
-                            <input type="radio" name="type" value='member' checked></label>
-                            <label class="ml-3">비 회원
-                            <input type="radio" name="type" value="nonMemeber"></label>
-                        </div>
-                        <div class="member-input mt-3" id="member">
-                            <div class="input-gorup form-inline">
-                                <label class="input-label">아이디 :</label>
-                                <input type="text" class="form-control text-input" id="id">
+                        <div class="text-white mt-3" id="memberInput">
+                            <div class="d-flex">
+                                <label class="col-3" >아이디 : </label>
+                                <input type="text" class="form-control col-9" id="idInput">
                             </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">비밀번호 :</label>
-                                <input type="password" class="form-control text-input" id="password">
+                            <div class="d-flex mt-2">
+                                <label class="col-3">비밀번호 : </label>
+                                <input type="text" class="form-control col-9" id="passwordInput">
                             </div>
-
                         </div>
 
-                        <div class="no-member-input mt-3 d-none" id="nonMember">
-                            <div class="input-gorup form-inline">
-                                <label class="input-label">이름 </label>
-                                <input type="text" class="form-control text-input" id="name">
+                        <div class="text-white mt-3 d-none" id="nonMemberInput">
+                            <!-- 비회원선택시 기존에 있던걸 숨겨둔 상태에서 보이게한다-->
+                            <div class="d-flex">
+                                <label class="col-3">이름 : </label>
+                                <input type="text" class="form-control col-9" id="nameInput">
                             </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">전화번호 </label>
-                                <input type="text" class="form-control text-input" id="phoneNumber">
+                            <div class="d-flex mt-2">
+                                <label class="col-3">전화번호 : </label>
+                                <input type="text" class="form-control col-9" id="phoneNumberInput">
                             </div>
-                            <div class="input-gorup form-inline mt-3">
-                                <label class="input-label">날짜 </label>
-                                <input type="text" class="form-control text-input" id="date">
+                            <div class="d-flex mt-2">
+                                <label class="col-3">날짜 : </label>
+                                <input type="text" class="form-control col-9" id="date">
                             </div>
-
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button class="btn btn-success mt-3 mr-5" id="lookupBtn">조회 하기</button>
+                        
+                        <div class="d-flex justify-content-end mt-3">
+                            <button type="button" class="btn btn-success" id="lookUpBtn">조회하기</button>
+                        </div>
+                    </div>
+                    <div class="reserve-number col-3 d-flex justify-content-center align-items-center">
+                        <div class="text-white">
+                            <h2>예약문의:</h2>
+                            <h1>010-<br>000-0000</h1>
                         </div>
                     </div>
                 </article>
-                <article class="reservation-call d-flex justify-content-center align-items-center">
-                    <div>
-                        <h3>예약문의 : </h3>
-                        <h1>010-</h1>
-                        <h1>000-1111</h1>
-                    </div>
-                </article>
-            </sction>
-
-            <footer class="mt-3 ml-4">
-                <address>
-                    제주특별자치도 제주시 애월읍  <br>
-                    사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목 <br>
-                    Copyright 2025 tongnamu All right reserved
-                </address>
-
-            </footer>
-
-
+            </section>
+            <jsp:include page="footer.jsp"/>
         </div>
 
-    <script>
-        $(document).ready(function() {
+        <script>
+            $(document).ready(function(){
+                var imageList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg" 
+                	, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner2.jpg"
+                	,"http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner3.jpg"
+                	,"http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner4.jpg"];
+                var currentIndex = 0;
+                setInterval(function(){
+                    if(currentIndex == imageList.length){
+                        currentIndex = 0;
+                    }
+                    $("#mainbanner").attr("src",imageList[currentIndex++]);
+                }, 3000);
+                $("#lookUpBtn").on("click", function(){
+                    let id = $("#idInput").val();
+                    let password = $("#passwordInput").val();
+                    let name = $("#nameInput").val();
+                    let phoneNumber = $("#phoneNumberInput").val();
+                    let dat = $("#date").val();
+                    //회원이 선택된 경우
+                    let type = $("input[name='member']:checked").val();
+                    if(type == "member"){
+                        if(id == ""){
+                            alert("아이디를 입력하세요 ");
+                            return;
+                        }
 
-            // 데이트 피커 셋팅
-            $( "#date" ).datepicker({
-                minDate:0, 
-                dateFormat: "yy년 m월 d일",
+                        if(password ==""){
+                            alert("비밀번호를 입력하세요");
+                            return;
+                        }
+                    }
+                    //비회원이 선택된 경우
+                    else{
+                        if(name==""){
+                            alert("이름을 입력하세요");
+                            return;
+                        }
+                        
+                        if(phoneNumber ==""){
+                            alert("전화번호를 입력하세요");
+                            return;
+                        }
+
+                        if(!phoneNumber.startsIuth("010")){
+                            alert("010으로 시작하는 번호만 입력 가능합니다.");
+                            return;
+                        }
+
+                        if(date == ""){
+                            alert("날짜를 입력하세여");
+                            return;
+                        }
+                    }
+
+                });
+                // $( "#datepickerStart" ).datepicker({
+                //     dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+                //     dateFormat:"yyyy년 mm월 dd 일",
+                //     showButtonPanel: true,
+                //     currentText:"오늘",
+                //     minDate:0,
+                //     onSelect:function(getDate){
+                //         //옵션을 바꾼다, min데이트 옵션을 , 값을 넣는다 
+                //         $("#datepickerEnd").datepicker('option','minDate',getDate);
+                //     }
+                // })
+
+                $("input[name='member']").on("change", function(){
+                    //선택된 input 태그 가져오기
+                    //이벤트 발생한것을 가져온다 -> this
+                    let type = $(this).val();
+                    if(type == "member"){
+                        //멤버 인풋 보여주기
+                        $("#memberInput").removeClass("d-none");
+                        //논 멤버 인풋 숨기기
+                        $("#nonMemberInput").addClass("d-none");
+
+                    }else{
+                        //논 멤버 인풋 보여주기
+                        $("#nonMemberInput").removeClass("d-none");
+                        $("#memberInput").addClass("d-none");
+                    }
+                });
             });
-
-            // 라디오 버튼 선택에 따른 인풋 변경
-            $("input[name=type]").on('change', function() {
-                if($(this).val() == 'member') {
-                    $("#member").removeClass("d-none");
-                    $("#nonMember").addClass("d-none");
-                } else {
-                    $("#nonMember").removeClass("d-none");
-                    $("#member").addClass("d-none");
-                }
-            });
-
-            $("#lookupBtn").on('click', function() {
-                if($("input[name=type]:checked").val() == "member") {
-
-                    // 회원 입력 항목 유효성 검사 
-                    if($("#id").val() == '')   {
-                        alert("아이디를 입력하세요.");
-                        return;
-                    }
-
-                    if($("#password").val() == '')   {
-                        alert("비밀번호를 입력하세요.");
-                        return;
-                    }
-
-                    alert("조회 성공");
-
-                } else {
-
-                    // 비 회원 입력 항목 유효성 검사 
-                    if($("#name").val() == '')   {
-                        alert("이름을 입력하세요.");
-                        return;
-                    }
-
-                    if($("#phoneNumber").val() == '')   {
-                        alert("전화번호를 입력하세요.");
-                        return;
-                    }
-
-                    // 010 으로 시작하는 것만 통과
-                    if(!$("#phoneNumber").val().startsWith("010"))   {
-                        alert("010 으로 시작하는 번호만 입력가능합니다. ");
-                        return;
-                    }
-
-                    if($("#date").val() == '')   {
-                        alert("날짜를 입력하세요.");
-                        return;
-                    }
-
-                    alert("조회 성공");
-                }
-            });
-
-            var bannerList = ["http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner1.jpg"
-            	, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner2.jpg"
-            	, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner3.jpg"
-            	, "http://marondal.com/material/images/dulumary/web/front/jquery/test06_banner4.jpg"];
-            var currentImageIndex = 0;
-            setInterval(function() {
-                $("#bannerImage").attr("src", bannerList[currentImageIndex]);
-                currentImageIndex++;
-
-                if(currentImageIndex == bannerList.length) {
-                    currentImageIndex = 0;
-                }
-            }, 3000); 
-        } );
-    </script>
-</body>
+        </script>
+    </body>
 </html>
