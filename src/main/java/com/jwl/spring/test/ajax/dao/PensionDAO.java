@@ -13,4 +13,11 @@ public interface PensionDAO {
 	public List<Pension> selectReserveList();
 	
 	public int deleteReserveList(@Param("id")int id);
+	
+	public int insertReserve(
+			@Param("name")String name
+			,@Param("date") String date
+			,@Param("day") int day
+			,@Param("headcount") int headcount
+			,@Param("phoneNumber") String phoneNumber);
 }

@@ -53,4 +53,27 @@ public class PensionController {
 		
 		return map;	
 	}
+	
+	@GetMapping("/input")
+	public String inputReservation() {
+		
+		return "ajax/pension/input";
+	}
+	
+	public Map<String, String>addReservation(
+			@RequestParam("name") String name
+			,@RequestParam("date") String date
+			,@RequestParam("day") int day
+			,@RequestParam("headcount") int headcount
+			,@RequestParam("phoneNumber") String phoneNumber) {
+		int count = pensionBO.addReserve(name, date, day, headcount, phoneNumber);
+		
+		Map<String, String> map = new HashMap<>();
+		if(count == 1) {
+			map.put("result", "success");
+		}else {
+			map.put("result", "fail");
+		}
+		return map;
+	}
 }

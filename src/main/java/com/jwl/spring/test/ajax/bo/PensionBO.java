@@ -20,4 +20,13 @@ public class PensionBO {
 	public int deleteReserveList(int id) {
 		return pensionDAO.deleteReserveList(id);
 	}
+	
+	public int addReserve(
+			String name
+			, String date
+			, int day
+			, int headcount
+			, String PhoneNumber) {
+		return pensionDAO.insertReserve(name, date, day, headcount, PhoneNumber);
+	}
 }
