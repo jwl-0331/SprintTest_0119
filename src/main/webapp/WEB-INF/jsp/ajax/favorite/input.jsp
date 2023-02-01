@@ -23,11 +23,28 @@
 			<input class="form-control col-11" type="text" name ="address" id="addressInput">
 			<button class="btn btn-info btn-block text-center ml-3" id="duplicateBtn">중복확인</button>
 		</div>
+		<div class= "small text-danger d-none" id="duplicateDiv">중복된 url 입니다.</div>
+		<div class= "small text-info d-none" id="availableDiv">저장 가능한 url 입니다.</div>
 		<button class="btn btn-success btn-block mt-3" id="saveBtn" type="submit">추가</button>
 	</div>
 	<script>
 		$(document).ready(function(){
+			//중복 체크 여부 확인 변수
 			var isChecked = false;
+			
+			//url 중복 상태 저장변수 - 중복되어있다 초기 상태
+			var isDuplicate = true;
+			
+			//해당 input의 수정이 생길떄마다 발생
+			$("#addressInput").on("input", function(){
+				// 중복체크 여부 과정을 모두 취소한다.
+				isChecked = false;
+				isDuplicate = true;
+				
+				$("#duplicateDiv").addClass("d-none");
+				$("#availableDiv").addClass("d-none");
+			});
+			
 			$("#duplicateBtn").on("click",function(){
 				let address = $("#addressInput").val();
 				
@@ -47,10 +64,14 @@
 					, success:function(data){
 						//true -> 중복이다
 						isChecked = true;
-						if(data.is_duplicate == true){
-							alert("url 중복입니다.");
+						if(data.is_duplicate == true){ //중복되었다
+							$("#duplicateDiv").removeClass("d-none");
+							$("#availableDiv").addClass("d-none");
+							isDuplicate = true;
 						}else{
-							alert("사용가능 합니다.");
+							$("#availableDiv").removeClass("d-none");
+							$("#duplicateDiv").addClass("d-none");
+							isDuplicate = false;
 						}
 					}
 					, error:function(){
@@ -81,10 +102,19 @@
 				}
 				
 				// is checked -> false 이면 중복확인 alert
+				// url 중복체크 했는지 유효성 검사
 				if(!isChecked){
 					alert("중복을 확인하세요");
 					return;
 				}
+				
+				//url이 중복되었는지 유효성검사
+				if(isDuplicate){
+					alert("url 중복되었습니다.");
+					return;
+				}
+				
+			
 			
 				$.ajax({
 					type:"post"

@@ -57,16 +57,33 @@ public class FavoriteController {
 		
 		Map<String,Boolean> result = new HashMap<>();
 		
-		 if(favoriteBO.isDuplicateAddress(address)) {
-			 result.put("is_duplicate", true);
-		 }else {
-			 result.put("is_duplicate", false);
-		 }
+		result.put("is_duplicate", favoriteBO.isDuplicateAddress(address));
 		
 		return result;
 	}
 	@GetMapping("/input")
 	public String favoriteInput() {
 		return "ajax/favorite/input";
+	}
+	
+	//삭제 API  (링크 삭제 방법도 있음)
+	//id 를 전달받고 , 해당 행을 삭제하는 API
+	@GetMapping("/delete")
+	public Map<String, String>deleteFavorite(
+			@RequestParam("id")int id) {
+		
+		int count = favoriteBO.deleteFavorite(id);
+		Map<String, String> map = new HashMap<>();
+		//삭제 성공시 {"result":"success"}
+		//실패시 {"result":"fail"}
+		
+		if(count == 1) {
+			map.put("result", "success");
+		}else {
+			map.put("result", "fail");
+		}
+		
+		return map;
+		
 	}
 }

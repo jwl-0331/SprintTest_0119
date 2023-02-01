@@ -16,4 +16,6 @@ public interface FavoriteDAO {
 			,@Param("address") String address);
 	
 	public int selectCountAddress(@Param("address")String address);
+	
+	public int deleteFavorite(@Param("id")int id);
 }

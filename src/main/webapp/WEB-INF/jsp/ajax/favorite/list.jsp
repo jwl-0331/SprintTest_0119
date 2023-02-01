@@ -21,6 +21,7 @@
 					<th>NO.</th>
 					<th>이름</th>
 					<th>주소</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -29,10 +30,40 @@
 					<td>${status.count }</td>
 					<td>${favorite.name}</td>
 					<td>${favorite.address}</td>
+					<td><button type="button" data-favorite-id="${favorite.id}" class="btn btn-danger btn-sm delete-btn">삭제</button></td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+	<script>
+		$(document).ready(function(){
+			$(".delete-btn").on("click",function(){
+				//모든 btn에 적용  class 로 처리
+	
+				//삭제 대상이 되는 행의 버튼 태그 객체
+				let id = $(this).data( "favorite-id");
+				$.ajax({
+					type:"get"
+					, url:"/ajax/favorite/delete"
+					, data:{"id":id}
+					, success:function(data){
+						//{"result":"success" or "fail"}
+						if(data.result == "success"){
+							//새로고침
+							location.reload();
+						}else{
+							alert("삭제 실패");
+						}	
+					}
+					, error:function(){
+						alert("삭제 에러");
+					}
+				});
+			});
+		});
+	</script>
 </body>
+
+
 </html>
