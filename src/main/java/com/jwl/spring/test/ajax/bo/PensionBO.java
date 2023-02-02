@@ -29,4 +29,9 @@ public class PensionBO {
 			, String PhoneNumber) {
 		return pensionDAO.insertReserve(name, date, day, headcount, PhoneNumber);
 	}
+	
+	public List<Pension> searchReserveList(String name, String phoneNumber) {
+		
+		return pensionDAO.selectReserveList(name, phoneNumber);
+	}
 }

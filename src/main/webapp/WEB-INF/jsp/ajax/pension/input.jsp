@@ -20,23 +20,87 @@
         	<div class="text-center">
         		<h3 class="font-weight-bold mt-4 mb-4">예약하기</h3>
         	</div>
-        	<label class="mt-3">이름</label> <br>
-        	<input type="text" class="form-control">
-        	<label class="mt-3">예약날짜</label> <br>
-        	<input type="text" class="form-control">
-        	<label class="mt-3">숙박일수</label> <br>
-        	<input type="text" class="form-control">
-        	<label class="mt-3">숙박인원</label> <br>
-        	<input type="text" class="form-control">
-        	<label class="mt-3">전화번호</label> <br>
-        	<input type="text" class="form-control">
-        	<button type="submit" class="btn form-control">예약하기</button>
-        	
+        	<div class="d-flex justify-content-center">
+        		<div class="w-50">
+		        	<label class="mt-3">이름</label> 
+		        	<input type="text" class="form-control" id="nameInput">
+		        	
+		        	<label class="mt-3">예약날짜</label>
+		        	<input type="text" class="form-control" id="dateInput">
+		        	
+		        	<label class="mt-3">숙박일수</label>
+		        	<input type="text" class="form-control" id="dayInput">
+		        	
+		        	<label class="mt-3">숙박인원</label> 
+		        	<input type="text" class="form-control" id="headcountInput">
+		        	
+		        	<label class="mt-3">전화번호</label>
+		        	<input type="text" class="form-control" id="phoneNumberInput">
+		        	
+		        	<button type="submit" class="btn btn-warning btn-block mt-3" id="reserveBtn">예약하기</button>
+        		</div>
+        	</div>
         </section>
         <jsp:include page="footer.jsp"/>
     </div>
     <script>
-    	
+    	$(document).ready(function(){
+    		$("#reserveBtn").on("click",function(){
+    			let name = $("#nameInput").val();
+        		let date = $("#dateInput").val();
+        		let day = $("#dayInput").val();
+        		let headcount = $("#headcountInput").val();
+        		let phoneNumber = $("#phoneNumberInput").val();
+        		
+        		if(name == ""){
+        			alert("이름을 입력하세요");
+        			return;
+        		}
+        		if(date == ""){
+        			alert("날짜를 입력하세요");
+        			return;
+        		}
+        		if(day == ""){
+        			alert("일수를 입력하세요");
+        			return;
+        		}
+        		// day 가 숫자가 아닌경우 유효성 검사
+        		// Not a Number
+        		if(isNaN(day)){
+        			alert("숙박일수는 숫자만 입력하세요");
+        			return;
+        			
+        		}
+        		if(headcount == ""){
+        			alert("인원수를 입력하세요");
+        			return;
+        		}
+        		if(isNaN(headcount)){
+        			alert("인원수는 숫자만 입력하세요");
+        			return;
+        		}
+        		if(phoneNumber == ""){
+        			alert("전화번호를 입력하세요");
+        			return;
+        		}
+    		
+	    		$.ajax({
+	    			type:"post"
+	    			, url: "/ajax/pension/add"
+	    			, data: {"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
+	    			, success:function(data){
+	    				if(data.result == "success"){
+	    					location.href = "/ajax/pension/list";
+	    				}else{
+	    					alert("저장실패");
+	    				}
+	    			}
+	    			, error:function(){
+	    				alert("예약 실패");
+	    			}
+	    		 });
+    		});
+    	});
     </script>
 </body>
 </html>

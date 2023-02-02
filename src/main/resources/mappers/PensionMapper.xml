@@ -47,10 +47,27 @@
  			, #{day}
  			, #{date}
  			, #{phoneNumber}
- 			, "대기중"
+ 			, '대기중'
  			, now()
  			, now()
  		)
  			
  	</insert>
+ 	
+ 	<select id="countSelectReserveList" resultType="com.jwl.spring.test.ajax.model.Pension" parameterType="map">
+ 		SELECT
+ 			`id`
+ 			, `name`
+ 			, `headcount`
+ 			, `day`
+ 			, `date`
+ 			, `phoneNumber`
+ 			, `state`
+ 			, `createdAt`
+ 			, `updatedAt`
+ 		FROM
+ 			`booking`
+ 		WHERE
+ 			`name` = #{name} AND `phoneNumber` = #{phoneNumber}
+ 	</select>
  </mapper>

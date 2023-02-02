@@ -8,11 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jwl.spring.test.ajax.bo.PensionBO;
+import com.jwl.spring.test.ajax.dao.PensionDAO;
 import com.jwl.spring.test.ajax.model.Pension;
 
 @Controller
@@ -60,6 +62,8 @@ public class PensionController {
 		return "ajax/pension/input";
 	}
 	
+	@PostMapping("/add")
+	@ResponseBody
 	public Map<String, String>addReservation(
 			@RequestParam("name") String name
 			,@RequestParam("date") String date
@@ -75,5 +79,15 @@ public class PensionController {
 			map.put("result", "fail");
 		}
 		return map;
+	}
+	
+	@PostMapping("/search")
+	@ResponseBody
+	public List<Pension>searchReservation(
+			@RequestParam("name")String name
+			,@RequestParam("phoneNumber") String phoneNumber) {
+		List<Pension> reserve = pensionBO.searchReserveList(name, phoneNumber);
+		
+		return reserve;
 	}
 }

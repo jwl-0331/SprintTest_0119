@@ -36,12 +36,12 @@
                         
                         <div class="text-white mt-3" id="memberInput">
                             <div class="d-flex">
-                                <label class="col-3" >아이디 : </label>
-                                <input type="text" class="form-control col-9" id="idInput">
+                                <label class="col-3" >이름 : </label>
+                                <input type="text" class="form-control col-9" id="nameInput">
                             </div>
                             <div class="d-flex mt-2">
-                                <label class="col-3">비밀번호 : </label>
-                                <input type="text" class="form-control col-9" id="passwordInput">
+                                <label class="col-3">전화번호 : </label>
+                                <input type="text" class="form-control col-9" id="phoneNumberInput">
                             </div>
                         </div>
 
@@ -49,20 +49,20 @@
                             <!-- 비회원선택시 기존에 있던걸 숨겨둔 상태에서 보이게한다-->
                             <div class="d-flex">
                                 <label class="col-3">이름 : </label>
-                                <input type="text" class="form-control col-9" id="nameInput">
+                                <input type="text" class="form-control col-9" id="bnameInput">
                             </div>
                             <div class="d-flex mt-2">
                                 <label class="col-3">전화번호 : </label>
-                                <input type="text" class="form-control col-9" id="phoneNumberInput">
+                                <input type="text" class="form-control col-9" id="bphoneNumberInput">
                             </div>
                             <div class="d-flex mt-2">
                                 <label class="col-3">날짜 : </label>
-                                <input type="text" class="form-control col-9" id="date">
+                                <input type="text" class="form-control col-9" id="dateInput">
                             </div>
                         </div>
                         
                         <div class="d-flex justify-content-end mt-3">
-                            <button type="button" class="btn btn-success" id="lookUpBtn">조회하기</button>
+                            <button type="button" class="btn btn-success" id="searchBtn">조회하기</button>
                         </div>
                     </div>
                     <div class="reserve-number col-3 d-flex justify-content-center align-items-center">
@@ -89,38 +89,42 @@
                     }
                     $("#mainbanner").attr("src",imageList[currentIndex++]);
                 }, 3000);
-                $("#lookUpBtn").on("click", function(){
-                    let id = $("#idInput").val();
-                    let password = $("#passwordInput").val();
+                $("#searchBtn").on("click", function(){
                     let name = $("#nameInput").val();
                     let phoneNumber = $("#phoneNumberInput").val();
-                    let dat = $("#date").val();
+                    let bname = $("#bnameInput").val();
+                    let bphoneNumber = $("#bphoneNumberInput").val();
+                    let date = $("#dateInput").val();
                     //회원이 선택된 경우
                     let type = $("input[name='member']:checked").val();
                     if(type == "member"){
-                        if(id == ""){
-                            alert("아이디를 입력하세요 ");
+                        if(name == ""){
+                            alert("이름을 입력하세요 ");
                             return;
                         }
 
-                        if(password ==""){
-                            alert("비밀번호를 입력하세요");
+                        if(phoneNumber ==""){
+                            alert("전화번호를 입력하세요");
+                            return;
+                        }
+                        if(!phoneNumber.startsWith("010")){
+                            alert("010으로 시작하는 번호만 입력 가능합니다.");
                             return;
                         }
                     }
                     //비회원이 선택된 경우
                     else{
-                        if(name==""){
+                        if(bname==""){
                             alert("이름을 입력하세요");
                             return;
                         }
                         
-                        if(phoneNumber ==""){
+                        if(bphoneNumber ==""){
                             alert("전화번호를 입력하세요");
                             return;
                         }
 
-                        if(!phoneNumber.startsIuth("010")){
+                        if(!(bphoneNumber.startsWith("010"))){
                             alert("010으로 시작하는 번호만 입력 가능합니다.");
                             return;
                         }
@@ -130,6 +134,21 @@
                             return;
                         }
                     }
+                    $.ajax({
+                    	type:"post"
+                    	, url:"/ajax/pension/search"
+                    	, data:{"name":name, "phoneNumber":phoneNumber}
+                    	, success:function(data){
+                    		alert("이름 : " + $(data.name) 
+                    				+"\n날짜 : " + $(data.date)
+                    				+"\n일수 : " + $(data.day)
+                    				+"\n인원 : " + $(data.headcount)
+                    				+"\n상태 : " + $(data.state));
+                    	}
+                    	, error:function(){
+                    		alert("조회결과가 없습니다.");
+                    	}
+                    });
 
                 });
                 // $( "#datepickerStart" ).datepicker({
