@@ -30,8 +30,8 @@ public class PensionBO {
 		return pensionDAO.insertReserve(name, date, day, headcount, PhoneNumber);
 	}
 	
-	public List<Pension> searchReserveList(String name, String phoneNumber) {
+	public Pension searchReserveList(String name, String phoneNumber) {
 		
-		return pensionDAO.selectReserveList(name, phoneNumber);
+		return pensionDAO.selectReserveByNameByPhoneNumber(name, phoneNumber);
 	}
 }

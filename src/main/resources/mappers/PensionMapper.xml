@@ -54,7 +54,7 @@
  			
  	</insert>
  	
- 	<select id="countSelectReserveList" resultType="com.jwl.spring.test.ajax.model.Pension" parameterType="map">
+ 	<select id="selectReserveByNameByPhoneNumber" resultType="com.jwl.spring.test.ajax.model.Pension" parameterType="map">
  		SELECT
  			`id`
  			, `name`

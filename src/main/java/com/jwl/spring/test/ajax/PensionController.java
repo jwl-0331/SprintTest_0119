@@ -81,13 +81,23 @@ public class PensionController {
 		return map;
 	}
 	
-	@PostMapping("/search")
+	@GetMapping("/find")
 	@ResponseBody
-	public List<Pension>searchReservation(
+	public Map<String, Object> searchReservation(
 			@RequestParam("name")String name
 			,@RequestParam("phoneNumber") String phoneNumber) {
-		List<Pension> reserve = pensionBO.searchReserveList(name, phoneNumber);
+		Pension reserve = pensionBO.searchReserveList(name, phoneNumber);
 		
-		return reserve;
+		//조회 성공하면 "result":"success", "data":booking}
+		//조회 실패하면 "result":"fail"
+		Map<String, Object> result = new HashMap<>();
+		if(reserve != null) {
+			result.put("result", "success");
+			result.put("booking", reserve);
+		}else {
+			result.put("result", "fail");
+		}
+		
+		return result;
 	}
 }

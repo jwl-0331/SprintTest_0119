@@ -21,7 +21,7 @@ public interface PensionDAO {
 			,@Param("headcount") int headcount
 			,@Param("phoneNumber") String phoneNumber);
 	
-	public List<Pension> selectReserveList(
+	public Pension selectReserveByNameByPhoneNumber(
 			@Param("name")String name
 			,@Param("phoneNumber") String phoneNumber);
 }

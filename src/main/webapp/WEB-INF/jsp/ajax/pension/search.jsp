@@ -135,18 +135,25 @@
                         }
                     }
                     $.ajax({
-                    	type:"post"
-                    	, url:"/ajax/pension/search"
+                    	type:"get"
+                    	, url:"/ajax/pension/find"
                     	, data:{"name":name, "phoneNumber":phoneNumber}
                     	, success:function(data){
-                    		alert("이름 : " + $(data.name) 
-                    				+"\n날짜 : " + $(data.date)
-                    				+"\n일수 : " + $(data.day)
-                    				+"\n인원 : " + $(data.headcount)
-                    				+"\n상태 : " + $(data.state));
+                    		
+                    		if(data.result == "fail"){
+                    			alert("조회 대상이 없습니다.");
+                    		}else{
+                    			alert("이름 : " + data.booking.name 
+                        				+"\n날짜 : " + data.booking.date
+                        				+"\n일수 : " + data.booking.day
+                        				+"\n인원 : " + data.booking.headcount
+                        				+"\n상태 : " + data.booking.state);
+                   	
+                    		}
+                    		
                     	}
                     	, error:function(){
-                    		alert("조회결과가 없습니다.");
+                    		alert("조회에러.");
                     	}
                     });
 
